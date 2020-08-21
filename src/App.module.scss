@@ -1,0 +1,15 @@
+.btn {
+  height: 32px;
+  padding: 0 16px;
+  background-color: aquamarine;
+  transition: background-color 200ms;
+  border: none;
+  
+  &:hover {
+    background-color: darken($color: aquamarine, $amount: 15);
+  }
+
+  &:active {
+    background-color: darken($color: aquamarine, $amount: 35);
+  }
+}

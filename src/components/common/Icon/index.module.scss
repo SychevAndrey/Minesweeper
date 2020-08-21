@@ -1,0 +1,20 @@
+.icon {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 14px;
+    height: 14px;
+}
+
+.prepend {
+  margin-left: -6px;
+  margin-right: 6px;
+}
+
+.append {
+  margin-left: 6px;
+  margin-right: -6px;
+}
