@@ -4,9 +4,7 @@
     align-items: center;
     overflow: visible;
     width: auto;
-    height: auto;
     margin: 0;
-    padding: 0;
     color: black;
     font-size: 18px;
     line-height: normal;
@@ -15,10 +13,13 @@
     white-space: nowrap;
     text-decoration: none;
     background: transparent;
-    border: 1px solid black;
     outline: none;
     cursor: pointer;
     user-select: none;
+    height: 32px;
+    padding: 0 16px;
+    transition: background-color 200ms;
+    border: none;
 
     &:disabled {
         color: white;

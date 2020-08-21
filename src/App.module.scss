@@ -1,9 +1,7 @@
-.btn {
-  height: 32px;
-  padding: 0 16px;
+$danger: rgb(241, 66, 50);
+
+.primary {
   background-color: aquamarine;
-  transition: background-color 200ms;
-  border: none;
   
   &:hover {
     background-color: darken($color: aquamarine, $amount: 15);
@@ -11,5 +9,29 @@
 
   &:active {
     background-color: darken($color: aquamarine, $amount: 35);
+  }
+}
+
+.danger {
+  background-color: $danger;
+  
+  &:hover {
+    background-color: darken($color: $danger, $amount: 5);
+  }
+
+  &:active {
+    background-color: darken($color: $danger, $amount: 15);
+  }
+}
+
+.success {
+  background-color: greenyellow;
+  
+  &:hover {
+    background-color: darken($color: greenyellow, $amount: 5);
+  }
+
+  &:active {
+    background-color: darken($color: greenyellow, $amount: 15);
   }
 }
