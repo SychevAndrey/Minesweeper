@@ -1,0 +1,16 @@
+.cell {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(160, 207, 251);
+  align-items: center;
+  justify-content: center;
+}
+
+.field {
+  margin-left: auto;
+  margin-top: 24px;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
