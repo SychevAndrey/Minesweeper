@@ -7,7 +7,8 @@ const Button: React.FC<ButtonProps> = ({
 	children = 'button',
 	className = '',
 	type = 'button',
-	mode = 'light',
+  mode = 'light',
+  color = 'primary',
 	href = null,
 	onClick,
 	disabled = false,
@@ -27,12 +28,14 @@ const Button: React.FC<ButtonProps> = ({
 	let btnClasses = styles.btn;
 	if (mode === 'dark') {
 		btnClasses = cn(btnClasses, styles.btn__dark);
-	}
+  }
+  
+  const btnColor = styles[color];
 
 	return (
 		<Tag
 			type={type}
-			className={cn(btnClasses, className)}
+      className={cn(btnClasses, btnColor, className)}
 			onClick={onBtnClick}
 			disabled={disabled}
 			{...attrs}

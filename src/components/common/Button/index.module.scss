@@ -33,3 +33,44 @@
     background: grey;
     cursor: auto;
 }
+
+$danger: rgb(241, 66, 50);
+$success: greenyellow;
+
+$primary: aquamarine;
+
+.primary {
+  background-color: $primary;
+  
+  &:hover {
+    background-color: darken($color: $primary, $amount: 15);
+  }
+
+  &:active {
+    background-color: darken($color: $primary, $amount: 35);
+  }
+}
+
+.danger {
+  background-color: $danger;
+  
+  &:hover {
+    background-color: darken($color: $danger, $amount: 5);
+  }
+
+  &:active {
+    background-color: darken($color: $danger, $amount: 15);
+  }
+}
+
+.success {
+  background-color: $success;
+  
+  &:hover {
+    background-color: darken($color: $success, $amount: 5);
+  }
+
+  &:active {
+    background-color: darken($color: $success, $amount: 15);
+  }
+}
