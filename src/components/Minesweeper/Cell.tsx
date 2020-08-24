@@ -17,7 +17,7 @@ const Cell = ({value, show, index, onTurn}: ICellProps) => {
       case CellState.show:
         return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value;
       case CellState.flag:
-        return <i className="tiny material-icons ">flag</i>;
+        return <i className="tiny material-icons">flag</i>;
       case CellState.mark:
         return <i className="tiny material-icons ">help</i>;
       default: return <span></span>;

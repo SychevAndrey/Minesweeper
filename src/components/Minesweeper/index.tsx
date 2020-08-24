@@ -3,7 +3,12 @@ import Cell from './Cell'
 
 import styles from './index.module.scss'
 
-type Difficulty = 'easy' | 'medium' | 'hard';
+export enum Difficulty {
+  easy,
+  medium,
+  hard
+}
+
 export enum CellState {
   show,
   hide,
@@ -28,12 +33,12 @@ const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
   // const [finish, setFinish] = useState<[boolean, boolean]>([false, false]); // запилить через контекст, туда же время
 
   function checkTurn(cellId: number, buttons: number): void {
-    console.log(cellId, buttons);
     switch (buttons) {
       case 1:
         setState((prevState) => {
           let newState = [...prevState];
           newState[cellId] = CellState.show;
+          localStorage.setItem('state', newState.join(' '))
           return newState;
         });
         break;
@@ -53,7 +58,6 @@ const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
         break;
       default: return;
     }
-    console.log(state); 
   }
 
   const cells = (): JSX.Element[] => {
@@ -61,11 +65,13 @@ const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
   }
 
   function getInitialState(): Array<CellState> {
-    return new Array(size*size).fill(CellState.hide);
+    const localState = localStorage.getItem('state')!.split(' ').map(item => parseInt(item));
+    console.log(localState);
+    return localState ? localState : new Array(size*size).fill(CellState.hide);
   }
 
   return (
-    <div style={{width: `${size*25}px`}} className={styles.field}>
+    <div style={{width: `${size*30}px`}} className={styles.field}>
       { cells() }
     </div>
   )

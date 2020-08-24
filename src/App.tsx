@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Minesweeper from './components/Minesweeper';
+import Minesweeper, { Difficulty } from './components/Minesweeper';
 
 function App() {
   return (
 		<>
       <Navbar />
-      <Minesweeper size={4} difficulty="medium" />
+      <Minesweeper size={4} difficulty={Difficulty.medium} />
+      <button onClick={() => {localStorage.state = null}}>Начать заново</button>
 		</>
 	);
 }

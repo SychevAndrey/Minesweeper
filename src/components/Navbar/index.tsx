@@ -12,9 +12,9 @@ export default function Navbar() {
           Сапёр
         </a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><a href="game.html">Играть</a></li>
-          <li><a href="stats.html">Статистика</a></li>
-          <li><a href="info.html">Информация</a></li>
+          <li><a href="game">Играть</a></li>
+          <li><a href="stats">Статистика</a></li>
+          <li><a href="info">Информация</a></li>
         </ul>
       </div>
     </nav>
