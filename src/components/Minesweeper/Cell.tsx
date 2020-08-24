@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 
 import styles from './index.module.scss'
 
 interface ICellProps {
-  value: number
+  value: number,
+  show: CellState,
+  index: number,
+  onTurn: (cellId: number, buttons: number) => void
 }
 
-const Cell: React.FC<ICellProps> = ({value}) => {
+type CellState = 'show' | 'hide' | 'flag' | 'mark';
 
-  const [state, setState] = useState(false);
-  function mouseClickHandler(event: React.MouseEvent): void {
-
-    if (event) {
-      console.log(event)
+const Cell = ({value, show, index, onTurn}: ICellProps) => {
+  function showCell():number | JSX.Element {
+    switch(show) {
+      case 'show':
+        return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value;
+      case 'flag':
+        return <i className="tiny material-icons ">flag</i>;
+      case 'mark':
+        return <i className="tiny material-icons ">help</i>;
+      default: return <span></span>;
     }
-    setState(true);
   }
 
+  console.log('render');
+
   return (
-    <span onClick={(event) => mouseClickHandler(event)} className={styles.cell}>
-      {state ? value === 9 ? <span>B</span> : value : ''}
+    <span 
+    onContextMenu={(e) => e.preventDefault()} 
+    onMouseDown={(event) => onTurn(index, event.buttons)} 
+    className={styles.cell}>
+      { showCell() }
     </span>
   )
 }
