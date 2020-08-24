@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { CellState } from './index'
 
 import styles from './index.module.scss'
 
@@ -9,16 +10,15 @@ interface ICellProps {
   onTurn: (cellId: number, buttons: number) => void
 }
 
-type CellState = 'show' | 'hide' | 'flag' | 'mark';
 
 const Cell = ({value, show, index, onTurn}: ICellProps) => {
   function showCell():number | JSX.Element {
     switch(show) {
-      case 'show':
+      case CellState.show:
         return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value;
-      case 'flag':
+      case CellState.flag:
         return <i className="tiny material-icons ">flag</i>;
-      case 'mark':
+      case CellState.mark:
         return <i className="tiny material-icons ">help</i>;
       default: return <span></span>;
     }
