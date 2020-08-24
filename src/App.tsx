@@ -1,13 +1,20 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Minesweeper, { Difficulty } from './components/Minesweeper';
+import Minesweeper from './pages/game';
+import Info from './pages/Info';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-		<>
-      <Navbar />
-      <Minesweeper size={4} difficulty={Difficulty.medium} />
-		</>
+		<BrowserRouter>
+			<Navbar />
+			<div className='container'>
+				<Switch>
+					<Route component={Minesweeper} path='/' exact />
+					<Route component={Info} path='/info' />
+				</Switch>
+			</div>
+		</BrowserRouter>
 	);
 }
 

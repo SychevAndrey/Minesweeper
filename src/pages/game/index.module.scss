@@ -1,0 +1,30 @@
+.cell {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(160, 207, 251);
+  align-items: center;
+  justify-content: center;
+  border: 2px inset deepskyblue;
+  border-bottom: 0;
+  border-right: 0;
+  box-sizing: border-box;
+  font-weight: 600;
+
+  &:hover {
+    background-color: dodgerblue;
+  }
+}
+
+.field {
+  box-sizing: content-box;
+  margin-left: auto;
+  margin-top: 24px;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  border: 3px solid rgb(22, 98, 124);
+  border-top: 0;
+  border-left: 0;
+  user-select: none;
+}
