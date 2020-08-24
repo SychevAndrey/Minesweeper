@@ -12,13 +12,15 @@ interface IMinesweeperProps {
 }
 
 const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
-
   const data: Array<number> =
     [
     2, 9, 3, 1,
     3, 0, 9, 1,
     0, 0, 0, 2,
     0, 0, 0, 9];
+
+  const [state, setState] = useState<{ [key in number]: CellState }>(getInitialState(data));
+  const [finish, setFinish] = useState<[boolean, boolean]>([false, false]); // запилить через контекст, туда же время
 
   function checkTurn(cellId: number, buttons: number): void {
     console.log(cellId, buttons);
@@ -42,7 +44,7 @@ const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
     console.log(state);
   }
 
-  const cells = (data: Array<number>): JSX.Element[] => {
+  const cells = (): JSX.Element[] => {
     return data.map((cell, index) => <Cell value={cell} key={index} index={index} onTurn={checkTurn} show={state[index]} />)
   }
 
@@ -50,12 +52,9 @@ const Minesweeper: React.FC<IMinesweeperProps> = ({size, difficulty}) => {
     return new Array(size*size).fill('hide');
   }
 
-  const [state, setState] = useState<{ [key in number]: CellState }>(getInitialState(data));
-  const [finish, setFinish] = useState<[boolean, boolean]>([false, false]); // запилить через контекст, туда же время
-
   return (
     <div style={{width: `${size*25}px`}} className={styles.field}>
-      {cells(data)}
+      {cells()}
     </div>
   )
 }
