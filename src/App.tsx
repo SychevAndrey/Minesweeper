@@ -7,7 +7,6 @@ function App() {
 		<>
       <Navbar />
       <Minesweeper size={4} difficulty={Difficulty.medium} />
-      <button onClick={() => {localStorage.state = null}}>Начать заново</button>
 		</>
 	);
 }
