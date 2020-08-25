@@ -36,7 +36,6 @@
 
 $danger: rgb(241, 66, 50);
 $success: greenyellow;
-
 $primary: aquamarine;
 
 .primary {
@@ -55,6 +54,10 @@ $primary: aquamarine;
   background-color: $danger;
   
   &:hover {
+    background-color: darken($color: $danger, $amount: 5);
+  }
+
+  &:focus {
     background-color: darken($color: $danger, $amount: 5);
   }
 

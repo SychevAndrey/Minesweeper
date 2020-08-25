@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { CellState } from './index'
 
 import styles from './index.module.scss'
@@ -11,7 +11,7 @@ interface ICellProps {
 }
 
 
-const Cell = ({value, show, index, onTurn}: ICellProps) => {
+const Cell = memo(({value, show, index, onTurn}: ICellProps) => {
   function showCell():number | JSX.Element {
     switch(show) {
       case CellState.show:
@@ -23,7 +23,7 @@ const Cell = ({value, show, index, onTurn}: ICellProps) => {
       default: return <span></span>;
     }
   }
-
+  
   console.log('render');
 
   return (
@@ -34,6 +34,6 @@ const Cell = ({value, show, index, onTurn}: ICellProps) => {
       { showCell() }
     </span>
   )
-}
+}, (prev, next) => prev.show === next.show)
 
 export default Cell;
