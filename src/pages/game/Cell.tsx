@@ -15,7 +15,7 @@ const Cell = memo(({value, show, index, onTurn}: ICellProps) => {
   function showCell():number | JSX.Element {
     switch(show) {
       case CellState.show:
-        return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value;
+        return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value === 0 ? <span></span> : value;
       case CellState.flag:
         return <i className="tiny material-icons">flag</i>;
       case CellState.mark:

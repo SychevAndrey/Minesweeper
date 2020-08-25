@@ -30,6 +30,7 @@ const Minesweeper: React.FC = () => {
       case 1:
         setState((prevState) => {
           let newState = [...prevState];
+          if (newState[cellId] === CellState.show) return prevState;
           newState[cellId] = CellState.show;
           return newState;
         });
