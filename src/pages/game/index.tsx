@@ -25,12 +25,30 @@ const Minesweeper: React.FC = () => {
   
   // const [finish, setFinish] = useState<[boolean, boolean]>([false, false]); // запилить через контекст, туда же время
 
+
   function checkTurn(cellId: number, buttons: number): void {
     switch (buttons) {
       case 1:
         setState((prevState) => {
+          function openEmptyCells(cellId: number, newState: number[]): void {
+            if (cellId < 0 || cellId > size * size) return;
+            if (newState[cellId] === CellState.show) return;
+            if (data[cellId] === 0) {
+              newState[cellId] = CellState.show;
+              openEmptyCells(cellId - 1, newState);
+              openEmptyCells(cellId - 1, newState);
+              openEmptyCells(cellId - size, newState);
+              openEmptyCells(cellId - size + 1, newState);
+              openEmptyCells(cellId - size - 1, newState);
+              openEmptyCells(cellId + size, newState);
+              openEmptyCells(cellId + size - 1, newState);
+              openEmptyCells(cellId + size + 1, newState);
+            }
+          }
+
           let newState = [...prevState];
           if (newState[cellId] === CellState.show) return prevState;
+          openEmptyCells(cellId, newState);
           newState[cellId] = CellState.show;
           return newState;
         });
@@ -54,11 +72,10 @@ const Minesweeper: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log('useEffect')
     if (localStorage.getItem('field') === ''
       || localStorage.getItem('field') === null) {
       setData(() => {
-        const newData = generateField(size, Difficulty.hard)
+        const newData = generateField(size, Difficulty.easy)
         localStorage.setItem('field', newData.join(' '));
         return newData;
       });
@@ -72,12 +89,10 @@ const Minesweeper: React.FC = () => {
   }, [state])
 
   useEffect(() =>{
-    console.log('useEffect1')
     if (localStorage.getItem('field') === ''
       || localStorage.getItem('field') === null) {
-      console.log(data);
       setData(() => {
-        const newData = generateField(size, Difficulty.hard)
+        const newData = generateField(size, Difficulty.easy)
         localStorage.setItem('field', newData.join(' '));
         return newData;
       });
@@ -90,7 +105,6 @@ const Minesweeper: React.FC = () => {
 
   function getInitialState(hardReset : boolean): Array<CellState> {
     const localState = localStorage.getItem('state')?.split(' ').map(item => parseInt(item));
-    console.log(localState);
     return localState && !hardReset ? localState : new Array(size*size).fill(CellState.hide);
   }
 

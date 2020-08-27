@@ -10,12 +10,11 @@ interface ICellProps {
   onTurn: (cellId: number, buttons: number) => void
 }
 
-
 const Cell = memo(({value, show, index, onTurn}: ICellProps) => {
   function showCell():number | JSX.Element {
     switch(show) {
       case CellState.show:
-        return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value === 0 ? <span></span> : value;
+        return value === 9 ? <i className="tiny material-icons red-text">location_searching</i> : value === 0 ? <span className={styles.openedcell}></span> : value;
       case CellState.flag:
         return <i className="tiny material-icons">flag</i>;
       case CellState.mark:
@@ -23,8 +22,6 @@ const Cell = memo(({value, show, index, onTurn}: ICellProps) => {
       default: return <span></span>;
     }
   }
-  
-  console.log('render');
 
   return (
     <span 
