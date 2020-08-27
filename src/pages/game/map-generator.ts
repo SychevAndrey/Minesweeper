@@ -13,13 +13,11 @@ function generateField(size:number, dif: Difficulty): number[] {
   for (let i = 0; i <= length; i++) {
     if (field[i] === 9) {
       if (i % size !== 0) {
-        console.log(i);
         if (field[i - 1] < 9) field[i - 1] += 1;
         if (field[i + size - 1] < 9) field[i + size - 1] += 1;
         if (field[i - size - 1] < 9) field[i - size - 1] += 1;
       }
       if (i % (Math.floor(i / size + 1) * (size) - 1) !== 0) {
-        console.log(i % (Math.floor(i / size + 1) * (size) - 1), i);
         if (field[i + 1] < 9) field[i + 1] += 1;
         if (field[i + size + 1] < 9) field[i + size + 1] += 1;
         if (field[i - size + 1] < 9) field[i - size + 1] += 1;

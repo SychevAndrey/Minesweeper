@@ -4,6 +4,7 @@ import Button from '../../components/common/Button'
 import generateField from './map-generator'
 
 import styles from './index.module.scss'
+import { useGameContext } from './GameContext'
 
 export enum Difficulty {
   easy,
@@ -20,8 +21,8 @@ export enum CellState {
 
 const Minesweeper: React.FC = () => {
   const [data, setData] = useState<number[]>([]);
-  const [size, setSize] = useState<number>(8);
   const [state, setState] = useState<CellState[]>(getInitialState(false));
+  let { size } = useGameContext();
   
   // const [finish, setFinish] = useState<[boolean, boolean]>([false, false]); // запилить через контекст, туда же время
 
