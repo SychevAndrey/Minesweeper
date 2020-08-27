@@ -13,7 +13,9 @@ export const useGameContext = () => {
 
 export const GameProvider = ({children} : any): JSX.Element => {
   const [size, setSize] = useState(9);
-  const changeSize = (size: number) => setSize(size);
+  const changeSize = (size: number) => {
+    setSize(size)
+  };
 
   return (
 		<GameContext.Provider
